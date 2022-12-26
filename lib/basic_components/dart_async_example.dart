@@ -10,10 +10,15 @@ class DartAsyncExample extends StatefulWidget {
 
 class _DartAsyncExampleState extends State<DartAsyncExample> {
 
-  Future<int> _counterValue() {
-    return Future<int>.delayed(const Duration(seconds: 2), () {
-     return 2;
-    });
+  // Future<int> _counterValue() {
+  //   return Future<int>.delayed(const Duration(seconds: 2), () {
+  //    return 2;
+  //   });
+  // }
+
+  Future<int> _counterValue() async {
+    await  Future<int>.delayed(const Duration(seconds: 2));
+    return 1;
   }
 
   @override

@@ -1,5 +1,8 @@
+import 'package:basic_components_demo/basic_components/bottom_app_bar.dart';
 import 'package:basic_components_demo/basic_components/container_widget.dart';
 import 'package:basic_components_demo/basic_components/hero_transition_widget.dart';
+import 'package:basic_components_demo/presentation/screens/cities.dart';
+import 'package:basic_components_demo/presentation/screens/weather_app.dart';
 import 'package:flutter/material.dart';
 import 'basic_components/align_widget.dart';
 import 'basic_components/dart_async_example.dart';
@@ -39,6 +42,9 @@ class MyApp extends StatelessWidget {
         ScreenName.container: (context) => const ContainerWidget("Container"),
         ScreenName.align: (context) => const AlignWidget("Align"),
         ScreenName.hero: (context) => const HeroMainScreen(),
+        ScreenName.bottomAppBar: (context) => const BottomAppBarWidget(),
+        ScreenName.loadLocalFile: (context) => const CityList(),
+        ScreenName.loadWeather: (context) => WeatherApp(),
       },
     );
   }
@@ -56,7 +62,11 @@ class ScreenName {
   static const container = "/container";
   static const align = "/align";
   static const hero = "/hero";
+  static const bottomAppBar = "/bottomAppBar";
+  static const loadLocalFile = "/loadLocalFile";
+  static const loadWeather = "/loadWeather";
 }
+
 class MyComponents extends StatelessWidget {
   const MyComponents({Key? key}) : super(key: key);
 
@@ -137,6 +147,24 @@ class MyComponents extends StatelessWidget {
                   ));
                 },
                 child: Text("Hero Transition", textAlign: TextAlign.left),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, ScreenName.bottomAppBar);
+                },
+                child: Text("BottomAppBar", textAlign: TextAlign.left),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, ScreenName.loadLocalFile);
+                },
+                child: Text("Load local file", textAlign: TextAlign.left),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, ScreenName.loadWeather);
+                },
+                child: Text("Load Weather", textAlign: TextAlign.left),
               ),
             ],
           ),
