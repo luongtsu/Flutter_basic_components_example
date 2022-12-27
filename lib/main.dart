@@ -13,6 +13,7 @@ import 'basic_components/dart_async_example.dart';
 import 'basic_components/listview_widget.dart';
 import 'basic_components/password_field_widget.dart';
 import 'basic_components/scaffold_widget.dart';
+import 'basic_components/sliver_app_bar.dart';
 import 'basic_components/text_widget.dart';
 import 'basic_components/floating_action_button_widget.dart';
 import 'basic_components/image_widget.dart';
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
         ScreenName.positioned: (context) => const StackAndPositioned(),
         ScreenName.listView: (context) => const ListViewWidget(),
         ScreenName.wrap: (context) => const WrapWidget(),
+        ScreenName.sliverAppBar: (context) => const SliverAppBarExample(),
       },
     );
   }
@@ -79,6 +81,7 @@ class ScreenName {
   static const positioned = "/positioned";
   static const listView = "/listView";
   static const wrap = "/wrap";
+  static const sliverAppBar = "/sliverAppBar";
 }
 
 class MyComponents extends StatelessWidget {
@@ -199,6 +202,12 @@ class MyComponents extends StatelessWidget {
                   Navigator.pushNamed(context, ScreenName.listView);
                 },
                 child: Text("ListView", textAlign: TextAlign.left),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, ScreenName.sliverAppBar);
+                },
+                child: Text("SliverAppBar", textAlign: TextAlign.left),
               ),
               ElevatedButton(
                 onPressed: () {
