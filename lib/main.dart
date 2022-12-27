@@ -1,6 +1,9 @@
 import 'package:basic_components_demo/basic_components/bottom_app_bar.dart';
 import 'package:basic_components_demo/basic_components/container_widget.dart';
+import 'package:basic_components_demo/basic_components/expanded_widget.dart';
+import 'package:basic_components_demo/basic_components/fitted_box.dart';
 import 'package:basic_components_demo/basic_components/hero_transition_widget.dart';
+import 'package:basic_components_demo/basic_components/stack_and_positioned.dart';
 import 'package:basic_components_demo/presentation/screens/cities.dart';
 import 'package:basic_components_demo/presentation/screens/weather_app.dart';
 import 'package:flutter/material.dart';
@@ -41,10 +44,14 @@ class MyApp extends StatelessWidget {
         ScreenName.passwordField: (context) => const PasswordTextField("PasswordField"),
         ScreenName.container: (context) => const ContainerWidget("Container"),
         ScreenName.align: (context) => const AlignWidget("Align"),
+        ScreenName.expanded: (context) => const ExpandedWidget(),
         ScreenName.hero: (context) => const HeroMainScreen(),
         ScreenName.bottomAppBar: (context) => const BottomAppBarWidget(),
         ScreenName.loadLocalFile: (context) => const CityList(),
         ScreenName.loadWeather: (context) => WeatherApp(),
+        ScreenName.fittedBox: (context) => const FittedBoxWidget(),
+        ScreenName.positioned: (context) => const StackAndPositioned(),
+        ScreenName.listView: (context) => const ListViewWidget(),
       },
     );
   }
@@ -61,10 +68,14 @@ class ScreenName {
   static const passwordField = "/passwordField";
   static const container = "/container";
   static const align = "/align";
+  static const expanded = "/expanded";
+  static const fittedBox = "/fittedBox";
   static const hero = "/hero";
   static const bottomAppBar = "/bottomAppBar";
   static const loadLocalFile = "/loadLocalFile";
   static const loadWeather = "/loadWeather";
+  static const positioned = "/positioned";
+  static const listView = "/listView";
 }
 
 class MyComponents extends StatelessWidget {
@@ -140,13 +151,21 @@ class MyComponents extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute<void>(
-                    builder: (BuildContext context) {
-                      return const HeroMainScreen();
-                    },
-                  ));
+                  Navigator.pushNamed(context, ScreenName.positioned);
                 },
-                child: Text("Hero Transition", textAlign: TextAlign.left),
+                child: Text("Stack & Positioned", textAlign: TextAlign.left),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, ScreenName.expanded);
+                },
+                child: Text("Expanded, Row, Column, Spacer", textAlign: TextAlign.left),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, ScreenName.fittedBox);
+                },
+                child: Text("FittedBox", textAlign: TextAlign.left),
               ),
               ElevatedButton(
                 onPressed: () {
@@ -165,6 +184,22 @@ class MyComponents extends StatelessWidget {
                   Navigator.pushNamed(context, ScreenName.loadWeather);
                 },
                 child: Text("Load Weather", textAlign: TextAlign.left),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, ScreenName.listView);
+                },
+                child: Text("ListView", textAlign: TextAlign.left),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute<void>(
+                    builder: (BuildContext context) {
+                      return const HeroMainScreen();
+                    },
+                  ));
+                },
+                child: Text("Hero Transition", textAlign: TextAlign.left),
               ),
             ],
           ),
