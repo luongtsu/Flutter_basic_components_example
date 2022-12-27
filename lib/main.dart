@@ -4,6 +4,7 @@ import 'package:basic_components_demo/basic_components/expanded_widget.dart';
 import 'package:basic_components_demo/basic_components/fitted_box.dart';
 import 'package:basic_components_demo/basic_components/hero_transition_widget.dart';
 import 'package:basic_components_demo/basic_components/stack_and_positioned.dart';
+import 'package:basic_components_demo/basic_components/wrap_widget.dart';
 import 'package:basic_components_demo/presentation/screens/cities.dart';
 import 'package:basic_components_demo/presentation/screens/weather_app.dart';
 import 'package:flutter/material.dart';
@@ -52,6 +53,7 @@ class MyApp extends StatelessWidget {
         ScreenName.fittedBox: (context) => const FittedBoxWidget(),
         ScreenName.positioned: (context) => const StackAndPositioned(),
         ScreenName.listView: (context) => const ListViewWidget(),
+        ScreenName.wrap: (context) => const WrapWidget(),
       },
     );
   }
@@ -76,6 +78,7 @@ class ScreenName {
   static const loadWeather = "/loadWeather";
   static const positioned = "/positioned";
   static const listView = "/listView";
+  static const wrap = "/wrap";
 }
 
 class MyComponents extends StatelessWidget {
@@ -160,6 +163,12 @@ class MyComponents extends StatelessWidget {
                   Navigator.pushNamed(context, ScreenName.expanded);
                 },
                 child: Text("Expanded, Row, Column, Spacer", textAlign: TextAlign.left),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, ScreenName.wrap);
+                },
+                child: Text("Wrap", textAlign: TextAlign.left),
               ),
               ElevatedButton(
                 onPressed: () {
