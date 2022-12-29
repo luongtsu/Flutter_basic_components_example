@@ -3,8 +3,11 @@ import 'package:basic_components_demo/basic_components/container_widget.dart';
 import 'package:basic_components_demo/basic_components/expanded_widget.dart';
 import 'package:basic_components_demo/basic_components/fitted_box.dart';
 import 'package:basic_components_demo/basic_components/hero_transition_widget.dart';
+import 'package:basic_components_demo/basic_components/media_query.dart';
+import 'package:basic_components_demo/basic_components/shimmer.dart';
 import 'package:basic_components_demo/basic_components/stack_and_positioned.dart';
 import 'package:basic_components_demo/basic_components/wrap_widget.dart';
+import 'package:basic_components_demo/dio_retrofit_example/user_list_view.dart';
 import 'package:basic_components_demo/presentation/screens/cities.dart';
 import 'package:basic_components_demo/presentation/screens/weather_app.dart';
 import 'package:flutter/material.dart';
@@ -56,6 +59,9 @@ class MyApp extends StatelessWidget {
         ScreenName.listView: (context) => const ListViewWidget(),
         ScreenName.wrap: (context) => const WrapWidget(),
         ScreenName.sliverAppBar: (context) => const SliverAppBarExample(),
+        ScreenName.mediaQuery: (context) => const MediaQueryWidget(),
+        ScreenName.dioRetrofit: (context) => UserListView(),
+        ScreenName.shimmer: (context) => ShimmerWidget(),
       },
     );
   }
@@ -82,6 +88,9 @@ class ScreenName {
   static const listView = "/listView";
   static const wrap = "/wrap";
   static const sliverAppBar = "/sliverAppBar";
+  static const mediaQuery = "/mediaQuery";
+  static const dioRetrofit = "/dioRetrofit";
+  static const shimmer = "/shimmer";
 }
 
 class MyComponents extends StatelessWidget {
@@ -199,6 +208,12 @@ class MyComponents extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
+                  Navigator.pushNamed(context, ScreenName.dioRetrofit);
+                },
+                child: Text("Dio/Retrofit REST API", textAlign: TextAlign.left),
+              ),
+              ElevatedButton(
+                onPressed: () {
                   Navigator.pushNamed(context, ScreenName.listView);
                 },
                 child: Text("ListView", textAlign: TextAlign.left),
@@ -208,6 +223,18 @@ class MyComponents extends StatelessWidget {
                   Navigator.pushNamed(context, ScreenName.sliverAppBar);
                 },
                 child: Text("SliverAppBar", textAlign: TextAlign.left),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, ScreenName.mediaQuery);
+                },
+                child: Text("MediaQuery", textAlign: TextAlign.left),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, ScreenName.shimmer);
+                },
+                child: Text("Shimmer", textAlign: TextAlign.left),
               ),
               ElevatedButton(
                 onPressed: () {
